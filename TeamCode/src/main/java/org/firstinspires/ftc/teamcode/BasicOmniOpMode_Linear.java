@@ -107,39 +107,41 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             double max;
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
-            double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
-            double lateral =  gamepad1.left_stick_x;
-            double yaw     =  gamepad1.right_stick_x;
+            double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
+            double lateral = gamepad1.left_stick_x;
+            double yaw = gamepad1.right_stick_x;
 
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
-            double leftFrontPower  = axial + lateral + yaw;
+            double leftFrontPower = axial + lateral + yaw;
             double rightFrontPower = axial - lateral - yaw;
-            double leftBackPower   = axial - lateral + yaw;
-            double rightBackPower  = axial + lateral - yaw;
+            double leftBackPower = axial - lateral + yaw;
+            double rightBackPower = axial + lateral - yaw;
 
             // working on slow down bumper and set max power
             final double maxPower = 1;
             final double driveTrain_slowSpeed = 0.5;
-            // double gamepad1.left_bumper = diveTrain_SlowSpeed
-            //if (gamepad1.left_bumper) {
-              Object CommonLogic = null;
-           // (CommonLogic.joyStickMath(gamepad1.left_stick_y * -1),
-            //            CommonLogic.joyStickMath(gamepad1.left_stick_x),
-            //            CommonLogic.joyStickMath(gamepad1.right_stick_x), DTrain_SLOWSPEED);
+            if (gamepad1.right_bumper) {
+                double driveTrainSlowSpeed = driveTrain_slowSpeed;
+            }
+            /*
+             (CommonLogic.joyStickMath(gamepad1.left_stick_y * -1),
+                        CommonLogic.joyStickMath(gamepad1.left_stick_x),
+                        CommonLogic.joyStickMath(gamepad1.right_stick_x), DTrain_SLOWSPEED);
+             Normalize the values so no wheel power exceeds 100%
+             This ensures that the robot maintains the desired motion.
+            */
 
 
-                // Normalize the values so no wheel power exceeds 100%
-            // This ensures that the robot maintains the desired motion.
             max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
             max = Math.max(max, Math.abs(leftBackPower));
             max = Math.max(max, Math.abs(rightBackPower));
 
             if (max > 1.0) {
-                leftFrontPower  /= max;
+                leftFrontPower /= max;
                 rightFrontPower /= max;
-                leftBackPower   /= max;
-                rightBackPower  /= max;
+                leftBackPower /= max;
+                rightBackPower /= max;
             }
 
             // This is test code:
@@ -152,12 +154,12 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             //      the setDirection() calls above.
             // Once the correct motors move in the correct direction re-comment this code.
 
-            /*
-            leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  // X gamepad
+
+            leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  //X gamepad1
             leftBackPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
             rightFrontPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
             rightBackPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
-            */
+
 
             // Send calculated power to wheels
             leftFrontDrive.setPower(leftFrontPower);
