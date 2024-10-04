@@ -26,8 +26,7 @@ android {
     signingConfigs {
         release {
             def apkStoreFile = System.getenv("APK_SIGNING_STORE_FILE")
-            if (apkStoreFile != null) {
-                keyAlias System.getenv("APK_SIGNING_KEY_ALIAS")
+            if (apkStoreFile != null) {keyAlias Systemgetenv("APK_SIGNING_KEY_ALIAS")
                 keyPassword System.getenv("APK_SIGNING_KEY_PASSWORD")
                 storeFile file(System.getenv("APK_SIGNING_STORE_FILE"))
                 storePassword System.getenv("APK_SIGNING_STORE_PASSWORD")
@@ -52,7 +51,7 @@ android {
         applicationId 'com.qualcomm.ftcrobotcontroller'
         minSdkVersion 24
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 28
+        targetSdkVersion 27
 
         /**
          * We keep the versionCode and versionName of robot controller applications in sync with
@@ -89,6 +88,7 @@ android {
             signingConfig signingConfigs.release
 
             ndk {
+                //noinspection ChromeOsAbiSupport
                 abiFilters "armeabi-v7a", "arm64-v8a"
             }
         }
@@ -96,6 +96,7 @@ android {
             debuggable true
             jniDebuggable true
             ndk {
+                //noinspection ChromeOsAbiSupport
                 abiFilters "armeabi-v7a", "arm64-v8a"
             }
         }

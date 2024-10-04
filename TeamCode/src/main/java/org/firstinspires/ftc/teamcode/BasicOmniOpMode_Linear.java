@@ -90,8 +90,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         // when you first test your robot, push the left joystick forward and observe the direction the wheels turn.
         // Reverse the direction (flip FORWARD <-> REVERSE ) of any wheel that runs backward
         // Keep testing until ALL the wheels move the robot forward when you push the left joystick forward.
-        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftBackDrive.setDirection(DcMotor.Direction.REVERSE);
+        leftFrontDrive.setDirection(DcMotor.Direction.FORWARD);
+        leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
 
@@ -155,10 +155,10 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             // Once the correct motors move in the correct direction re-comment this code.
 
 
-            leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  //X gamepad1
-            leftBackPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
-            rightFrontPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
-            rightBackPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
+           // leftFrontPower  = gamepad1.x ? 1.0 : 0.0;  //X gamepad1
+           // leftBackPower   = gamepad1.a ? 1.0 : 0.0;  // A gamepad
+           // rightFrontPower = gamepad1.y ? 1.0 : 0.0;  // Y gamepad
+           // rightBackPower  = gamepad1.b ? 1.0 : 0.0;  // B gamepad
 
 
             // Send calculated power to wheels
