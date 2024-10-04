@@ -33,6 +33,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /*
@@ -117,7 +118,18 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             double leftBackPower   = axial - lateral + yaw;
             double rightBackPower  = axial + lateral - yaw;
 
-            // Normalize the values so no wheel power exceeds 100%
+            // working on slow down bumper and set max power
+            final double maxPower = 1;
+            final double driveTrain_slowSpeed = 0.5;
+            // double gamepad1.left_bumper = diveTrain_SlowSpeed
+            //if (gamepad1.left_bumper) {
+              Object CommonLogic = null;
+           // (CommonLogic.joyStickMath(gamepad1.left_stick_y * -1),
+            //            CommonLogic.joyStickMath(gamepad1.left_stick_x),
+            //            CommonLogic.joyStickMath(gamepad1.right_stick_x), DTrain_SLOWSPEED);
+
+
+                // Normalize the values so no wheel power exceeds 100%
             // This ensures that the robot maintains the desired motion.
             max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
             max = Math.max(max, Math.abs(leftBackPower));
@@ -152,6 +164,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             rightFrontDrive.setPower(rightFrontPower);
             leftBackDrive.setPower(leftBackPower);
             rightBackDrive.setPower(rightBackPower);
+
 
             // Show the elapsed game time and wheel power.
 //            telemetry.addData("Status", "Run Time: " + runtime.toString());
