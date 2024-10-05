@@ -80,7 +80,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         DcMotor leftBackDrive = hardwareMap.get(DcMotor.class, "left_back_drive");
         DcMotor rightFrontDrive = hardwareMap.get(DcMotor.class, "right_front_drive");
         DcMotor rightBackDrive = hardwareMap.get(DcMotor.class, "right_back_drive");
-
+        DcMotor leftLiftMtr =  hardwareMap.get(DcMotor.class, "left_lift_mtr");
+        DcMotor rightLiftMtr =  hardwareMap.get(DcMotor.class, "right_lift_mtr");
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
         // ########################################################################################
@@ -95,7 +96,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
         leftBackDrive.setDirection(DcMotor.Direction.FORWARD);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         rightBackDrive.setDirection(DcMotor.Direction.FORWARD);
-
+        leftLiftMtr.setDirection(DcMotorSimple.Direction.FORWARD);
+        rightLiftMtr.setDirection(DcMotorSimple.Direction.REVERSE);
         // Wait for the game to start (driver presses START)
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -110,7 +112,17 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
             double lateral = gamepad1.left_stick_x;
+            double leftStickY = gamepad2.left_stick_y;
             double yaw = gamepad1.right_stick_x;
+
+            // lift
+            if (gamepad2.left_stick_y  < 0.5)
+            leftLiftMtr.setPower(gamepad2.left_stick_y * 1);
+            rightLiftMtr.setPower(gamepad2.left_stick_y * 1);
+           // if  (gamepad2.left_stick_y < 0.5)
+             //   leftLiftMtr.setPower(0.3);
+               //  rightLiftMtr.setPower(0.3);
+
 
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
