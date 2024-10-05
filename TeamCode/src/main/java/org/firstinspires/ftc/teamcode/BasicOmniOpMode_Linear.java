@@ -36,6 +36,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+
 /*
  * This file contains an example of a Linear "OpMode".
  * An OpMode is a 'program' that runs in either the autonomous or the teleop period of an FTC match.
@@ -104,7 +105,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-            double max;
+            double max = 1;
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
@@ -119,11 +120,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             double rightBackPower = axial + lateral - yaw;
 
             // working on slow down bumper and set max power
-            final double maxPower = 1;
-            final double driveTrain_slowSpeed = 0.5;
-            if (gamepad1.right_bumper) {
-                double driveTrainSlowSpeed = driveTrain_slowSpeed;
-            }
+
             /*
              (CommonLogic.joyStickMath(gamepad1.left_stick_y * -1),
                         CommonLogic.joyStickMath(gamepad1.left_stick_x),
@@ -142,6 +139,15 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
                 rightFrontPower /= max;
                 leftBackPower /= max;
                 rightBackPower /= max;
+            }
+
+            final double driveTrain_slowSpeed = 0.5;
+
+            if (gamepad1.right_bumper = true) {
+                max = driveTrain_slowSpeed;
+            }
+            else if (gamepad1.right_bumper) {
+                max = 1;
             }
 
             // This is test code:
