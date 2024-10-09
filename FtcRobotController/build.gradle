@@ -21,6 +21,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     namespace = 'com.qualcomm.ftcrobotcontroller'
+    buildToolsVersion '34.0.0'
+    buildFeatures {
+        viewBinding true
+    }
+    ndkVersion 'r27b'
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation-jvm:1.8.2'
 }
 
 apply from: '../build.dependencies.gradle'

@@ -117,8 +117,8 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
 
             // lift
             if (gamepad2.left_stick_y  < 0.5)
-            leftLiftMtr.setPower(gamepad2.left_stick_y * 1);
-            rightLiftMtr.setPower(gamepad2.left_stick_y * 1);
+                leftLiftMtr.setPower(gamepad2.left_stick_y * 1);
+        rightLiftMtr.setPower(gamepad2.left_stick_y * 1);
            // if  (gamepad2.left_stick_y < 0.5)
              //   leftLiftMtr.setPower(0.3);
                //  rightLiftMtr.setPower(0.3);
@@ -155,7 +155,7 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
 
             final double driveTrain_slowSpeed = 0.5;
 
-            if (gamepad1.right_bumper = true) {
+            if (gamepad1.right_bumper) {
                 max = driveTrain_slowSpeed;
             }
             else if (gamepad1.right_bumper) {
