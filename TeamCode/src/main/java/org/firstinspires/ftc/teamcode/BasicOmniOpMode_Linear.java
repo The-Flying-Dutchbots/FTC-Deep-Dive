@@ -116,12 +116,10 @@ public class BasicOmniOpMode_Linear extends LinearOpMode {
             double yaw = gamepad1.right_stick_x;
 
             // lift
-            if (gamepad2.left_stick_y  < 0.5)
-                leftLiftMtr.setPower(gamepad2.left_stick_y * 1);
-        rightLiftMtr.setPower(gamepad2.left_stick_y * 1);
-           // if  (gamepad2.left_stick_y < 0.5)
-             //   leftLiftMtr.setPower(0.3);
-               //  rightLiftMtr.setPower(0.3);
+   //         if (gamepad2.left_stick_y  < 0.5)
+     //           leftLiftMtr.setPower(gamepad2.left_stick_y * 1);
+       //         rightLiftMtr.setPower(gamepad2.left_stick_y * 1);
+
 
 
             // Combine the joystick requests for each axis-motion to determine each wheel's power.

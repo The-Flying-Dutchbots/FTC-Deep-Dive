@@ -152,24 +152,3 @@ public class RobotAutoBase extends LinearOpMode {
         //waitForStart();
 
 
-       /* if (opModeIsActive()) {
-            leftFrontTarget = leftFrontDrive.getCurrentPosition() + (int) (distance * COUNTS_PER_INCH);
-            rightFrontTarget = rightFrontDrive.getCurrentPosition() + (int) (distance * COUNTS_PER_INCH);
-            leftBackTarget = leftBackDrive.getCurrentPosition() + (int) (distance * COUNTS_PER_INCH);
-            rightBackTarget = rightBackDrive.getCurrentPosition() + (int) (distance * COUNTS_PER_INCH);
-            leftFrontDrive.setTargetPosition(leftFrontTarget);
-            rightFrontDrive.setTargetPosition(rightFrontTarget);
-            leftBackDrive.setTargetPosition(leftBackTarget);
-            rightBackDrive.setTargetPosition(rightBackTarget);
-
-            leftFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightFrontDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            leftBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            rightBackDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            leftFrontDrive.setPower(Math.abs(driveSpeed));
-            rightFrontDrive.setPower(Math.abs(driveSpeed));
-            leftBackDrive.setPower(Math.abs(driveSpeed));
-          rightBackDrive.setPower(Math.abs(driveSpeed));
-
-        */
