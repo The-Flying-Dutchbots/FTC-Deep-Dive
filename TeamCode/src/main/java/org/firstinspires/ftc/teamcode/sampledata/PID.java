@@ -110,6 +110,10 @@ public class PID extends Object {
         checkSigns();
     }
 
+    public PID() {
+
+    }
+
     //**********************************
     // Configuration Methods
     //**********************************

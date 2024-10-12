@@ -30,51 +30,39 @@
 package org.firstinspires.ftc.teamcode;
 
 //import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.sampledata.PID;
 
-@TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
+//@TeleOp(name="Basic: Omni Linear OpMode", group="Linear OpMode")
 //@Disabled
-public class liftClass extends LinearOpMode {
 
+public class liftClass {
+ PID  pid;
     // Declare OpMode members for each of the 4 motors.
     private final ElapsedTime runtime = new ElapsedTime();
+    double liftPower = 0;
+    double minPos = 0;
+    double maxPos = 4000;
 
-    public void runOpMode() {
 
-        // Initialize the hardware variables. Note that the strings used here must correspond
-        // to the names assigned during the robot configuration step on the DS or RC devices.
 
-        DcMotor leftLiftMtr =  hardwareMap.get(DcMotor.class, "left_lift_mtr");
-        DcMotor rightLiftMtr =  hardwareMap.get(DcMotor.class, "right_lift_mtr");
+    public void liftClass(){
+        pid = new PID();
+        pid.setPID(.05,0,0,0);
+    }
+    public void lift( DcMotor leftLiftMtr, DcMotor rightLiftMtr, double left_stick_y) {
 
-        leftLiftMtr.setDirection(DcMotorSimple.Direction.FORWARD);
-        rightLiftMtr.setDirection(DcMotorSimple.Direction.REVERSE);
-        // Wait for the game to start (driver presses START)
-        telemetry.addData("Status", "Initialized");
-        telemetry.update();
-
-        double liftPower = 0;
-        double minPos = 0;
-        double maxPos = 4000;
-        waitForStart();
-        runtime.reset();
-
-        // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()) {
+            pid.setSetpoint(targetPos);
             double max = 1;
-            leftLiftMtr.setPower(liftPower);
-            rightLiftMtr.setPower(liftPower);
+
             // lift
-            if (gamepad2.left_stick_y  < 0.5)
-               liftPower = (gamepad2.left_stick_y * 1);
+            if (left_stick_y  > 0.5)
+               liftPower = (left_stick_y * 1);
 
-           // else liftPower = (PID.);
-
+           else liftPower = pid.getOutput(rightLiftMtr.getCurrentPosition());
+        leftLiftMtr.setPower(liftPower);
+        rightLiftMtr.setPower(liftPower);
         }
-    }}
+    }
